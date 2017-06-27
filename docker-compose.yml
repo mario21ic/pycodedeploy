@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+
+  codedeploy:
+    image: mario21ic/pycodedeploy
+    build:
+      context: docker/
+    volumes:
+      - ./artifactor.zip:/tmp/artifactor.zip
+      - ./appspec.yml:/tmp/appspec.yml
+    entrypoint: codedeploy

@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+files:
+  - source: ./
+    destination: /apps/tmp_web
+hooks:
+  BeforeInstall:
+    - location: scripts/aws_mkdir
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/aws_rsync
+      timeout: 300
+      runas: root
+    - location: scripts/aws_migrations
+      timeout: 300
+      runas: ec2-user
+  ApplicationStart:
+    - location: scripts/aws_rmdir
+      timeout: 300
+      runas: root

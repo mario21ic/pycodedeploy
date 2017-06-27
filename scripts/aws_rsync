@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "rsync /apps/tmp_web /apps/web"
